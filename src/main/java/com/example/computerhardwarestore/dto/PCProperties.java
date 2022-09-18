@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 
-import javax.validation.constraints.NotNull;
+
 
 
 @Data
@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 public class PCProperties extends GoodProperties {
 
     @JsonProperty("form_factor")
-    @NotNull(message = "Type cannot be null")
     private PCFormFactorType formFactor;
 
 

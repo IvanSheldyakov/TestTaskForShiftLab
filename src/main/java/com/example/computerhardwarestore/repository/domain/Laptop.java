@@ -1,22 +1,26 @@
 package com.example.computerhardwarestore.repository.domain;
 
 
+import com.example.computerhardwarestore.repository.domain.possiblevalues.LaptopSize;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "laptop")
 public class Laptop extends GoodEntity {
 
     @Column(name = "size")
-    private int size;
+    @NotNull(message = "Type cannot be null")
+    private LaptopSize size;
 
-    public int getSize() {
+    public LaptopSize getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(LaptopSize size) {
         this.size = size;
     }
 

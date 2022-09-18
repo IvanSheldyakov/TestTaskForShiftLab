@@ -14,7 +14,7 @@ import com.example.computerhardwarestore.repository.mappers.LaptopPropertiesMapp
 import com.example.computerhardwarestore.repository.mappers.MonitorPropertiesMapper;
 import com.example.computerhardwarestore.repository.mappers.PCPropertiesMapper;
 import com.example.computerhardwarestore.service.AddService;
-import lombok.AllArgsConstructor;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/add")
+@Api
 public class AddController {
 
     private static Logger logger = LoggerFactory.getLogger(AddController.class);
@@ -51,7 +52,7 @@ public class AddController {
     }
 
     @PostMapping("/monitor")
-    public ResponseEntity<IdMessage> addMonitor(@RequestBody MonitorProperties properties) {
+    public ResponseEntity<IdMessage> addMonitor(@RequestBody  MonitorProperties properties) {
 
         logger.debug("'addMonitor' request with properties " + properties);
 
@@ -97,5 +98,7 @@ public class AddController {
         logger.debug("'addLaptop' response " + message);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
+
+
 
 }

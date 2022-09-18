@@ -1,5 +1,6 @@
 package com.example.computerhardwarestore.repository.domain.converter;
 
+import com.example.computerhardwarestore.exceptions.IllegalPropertiesException;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 
 import javax.persistence.AttributeConverter;
@@ -21,6 +22,6 @@ public class GoodTypeConverter implements AttributeConverter<GoodType,String> {
         return Stream.of(GoodType.values())
                         .filter(s -> s.getType().equals(type))
                         .findFirst()
-                        .orElseThrow(IllegalArgumentException::new);
+                        .orElseThrow(IllegalPropertiesException::new);
     }
 }

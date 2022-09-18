@@ -15,23 +15,18 @@ import javax.validation.constraints.*;
 public abstract class GoodProperties {
 
 
-    @NotNull(message = "Type cannot be null")
+
     protected GoodType type;
 
     @JsonProperty("serial_number")
-    @NotBlank(message = "serial number cannot be blank")
+
     protected String serialNumber;
 
-    @NotBlank(message = "serial manufacturer cannot be blank")
     protected String manufacturer;
 
-    @NotNull(message = "Price cannot be null")
-    @Positive(message = "Price cannot be negative")
     protected Double price;
 
     @JsonProperty("quantity_in_stock")
-    @NotNull(message = "Quantity cannot be null")
-    @PositiveOrZero(message = "Quantity cannot be negative")
     protected Long quantityInStock;
 
 }

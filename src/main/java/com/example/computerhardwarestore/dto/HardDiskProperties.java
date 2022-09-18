@@ -13,8 +13,7 @@ import javax.validation.constraints.Positive;
 @EqualsAndHashCode(callSuper = true)
 
 public class HardDiskProperties extends GoodProperties {
-    @NotNull(message = "Volume cannot be null")
-    @Positive(message = "Volume cannot be negative")
+
     private Double volume;
 
     @Override

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonpatch.JsonPatch;
 
 
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("app/update")
+@Api
 public class UpdateController {
 
     private static Logger logger = LoggerFactory.getLogger(UpdateController.class);
@@ -53,7 +55,7 @@ public class UpdateController {
             logger.debug("'updateMonitor' response " + monitor);
             return new ResponseEntity<>(monitor, HttpStatus.OK);
         } else {
-            logger.debug("'updateMonitor' response - monitor with id " + id + " not found");
+            logger.error("'updateMonitor' response - monitor with id " + id + " not found");
             throw new EntityNotFoundException(String.format("monitor with id %d not found", id));
         }
     }
@@ -63,7 +65,7 @@ public class UpdateController {
             JsonNode patched = patch.apply(objectMapper.convertValue(targetMonitor, JsonNode.class));
             return objectMapper.treeToValue(patched, Monitor.class);
         } catch (Exception e) {
-            logger.debug("'applyPatchToMonitor' cant apply patch " + patch);
+            logger.error("'applyPatchToMonitor' cant apply patch " + patch);
             throw new JsonProcessingException(e);
         }
 
@@ -83,7 +85,7 @@ public class UpdateController {
             logger.debug("'updateMonitor' response " + hardDisk);
             return new ResponseEntity<>(hardDisk, HttpStatus.OK);
         } else {
-            logger.debug("'updateMonitor' response - hard disk with id " + id + " not found");
+            logger.error("'updateMonitor' response - hard disk with id " + id + " not found");
             throw new EntityNotFoundException(String.format("hard disk with id %d not found", id));
         }
 
@@ -94,7 +96,7 @@ public class UpdateController {
             JsonNode patched = patch.apply(objectMapper.convertValue(targetHardDisk, JsonNode.class));
             return objectMapper.treeToValue(patched, HardDisk.class);
         } catch (Exception e) {
-            logger.debug("'applyPatchToHardDisk' cant apply patch " + patch);
+            logger.error("'applyPatchToHardDisk' cant apply patch " + patch);
             throw new JsonProcessingException(e);
         }
 
@@ -114,7 +116,7 @@ public class UpdateController {
             logger.debug("'updatePC' response " + pc);
             return new ResponseEntity<>(pc, HttpStatus.OK);
         } else {
-            logger.debug("'updatePC' response - pc with id " + id + " not found");
+            logger.error("'updatePC' response - pc with id " + id + " not found");
             throw new EntityNotFoundException(String.format("pc with id %d not found", id));
         }
     }
@@ -124,7 +126,7 @@ public class UpdateController {
             JsonNode patched = patch.apply(objectMapper.convertValue(targetPC, JsonNode.class));
             return objectMapper.treeToValue(patched, PC.class);
         } catch (Exception e) {
-            logger.debug("'applyPatchToPC' cant apply patch " + patch);
+            logger.error("'applyPatchToPC' cant apply patch " + patch);
             throw new JsonProcessingException(e);
         }
 
@@ -144,7 +146,7 @@ public class UpdateController {
             logger.debug("'updateLaptop' response " + laptop);
             return new ResponseEntity<>(laptop, HttpStatus.OK);
         } else {
-            logger.debug("'updateLaptop' response - laptop with id " + id + " not found");
+            logger.error("'updateLaptop' response - laptop with id " + id + " not found");
             throw new EntityNotFoundException(String.format("laptop with id %d not found", id));
         }
     }
@@ -154,7 +156,7 @@ public class UpdateController {
             JsonNode patched = patch.apply(objectMapper.convertValue(targetLaptop, JsonNode.class));
             return objectMapper.treeToValue(patched, Laptop.class);
         } catch (Exception e) {
-            logger.debug("'applyPatchToLaptop' cant apply patch " + patch);
+            logger.error("'applyPatchToLaptop' cant apply patch " + patch);
             throw new JsonProcessingException(e);
         }
 

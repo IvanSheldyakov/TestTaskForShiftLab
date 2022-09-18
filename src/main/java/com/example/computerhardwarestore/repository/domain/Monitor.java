@@ -3,12 +3,16 @@ package com.example.computerhardwarestore.repository.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "monitor")
 public class Monitor extends GoodEntity {
 
     @Column(name = "diagonal")
+    @NotNull(message = "Diagonal cannot be null")
+    @Positive(message = "Diagonal cannot be negative")
     private double diagonal;
 
     public double getDiagonal() {

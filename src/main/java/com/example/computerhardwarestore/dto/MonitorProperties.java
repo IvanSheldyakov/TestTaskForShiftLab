@@ -13,8 +13,7 @@ import javax.validation.constraints.Positive;
 
 public class MonitorProperties extends GoodProperties{
 
-    @NotNull(message = "Diagonal cannot be null")
-    @Positive(message = "Diagonal cannot be negative")
+
     private Double diagonal;
 
     @Override

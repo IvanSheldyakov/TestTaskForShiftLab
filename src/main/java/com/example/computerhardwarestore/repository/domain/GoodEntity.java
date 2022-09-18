@@ -3,6 +3,10 @@ package com.example.computerhardwarestore.repository.domain;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 
 @Entity
@@ -16,18 +20,25 @@ public abstract class GoodEntity {
     protected Long id;
 
     @Column(name = "type")
+    @NotNull(message = "Type cannot be null")
     protected GoodType type;
 
     @Column(name = "serial_number")
+    @NotBlank(message = "serial number cannot be blank")
     protected String serialNumber;
 
     @Column(name = "manufacturer")
+    @NotBlank(message = "serial manufacturer cannot be blank")
     protected String manufacturer;
 
     @Column(name = "price")
+    @NotNull(message = "Price cannot be null")
+    @Positive(message = "Price cannot be negative")
     protected double price;
 
     @Column(name = "quantity_in_stock")
+    @NotNull(message = "Quantity cannot be null")
+    @PositiveOrZero(message = "Quantity cannot be negative")
     protected Long quantityInStock;
 
     

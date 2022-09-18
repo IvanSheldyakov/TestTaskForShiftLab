@@ -6,6 +6,7 @@ import com.example.computerhardwarestore.model.GoodsList;
 import com.example.computerhardwarestore.repository.domain.GoodEntity;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 import com.example.computerhardwarestore.service.SearchService;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/goods/search")
+@Api
 public class GoodsSearchController {
 
     private static Logger logger = LoggerFactory.getLogger(GoodsSearchController.class);
@@ -42,7 +44,7 @@ public class GoodsSearchController {
             logger.debug("'getById' response " + good);
             return new ResponseEntity<>(good,HttpStatus.OK);
         } else {
-            logger.debug("'getById' response - good with id " + id + " not found");
+            logger.error("'getById' response - good with id " + id + " not found");
             throw new EntityNotFoundException(String.format("good with id %d not found",id));
         }
 

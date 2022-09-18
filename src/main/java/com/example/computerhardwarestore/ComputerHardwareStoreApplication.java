@@ -3,7 +3,7 @@ package com.example.computerhardwarestore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//TODO validation and swagger, readme, tests
+//TODO  swagger, readme, tests
 @SpringBootApplication
 public class ComputerHardwareStoreApplication {
 
