@@ -15,8 +15,12 @@ import com.example.computerhardwarestore.repository.mappers.MonitorPropertiesMap
 import com.example.computerhardwarestore.repository.mappers.PCPropertiesMapper;
 import com.example.computerhardwarestore.service.AddService;
 import io.swagger.annotations.Api;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +29,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("api/add")
 @Api
+@RestController
+@Tag(name = "Adding API", description = "REST API for adding new goods")
+@RequestMapping("api/add")
+@Log4j2
 public class AddController {
-
-    private static Logger logger = LoggerFactory.getLogger(AddController.class);
 
     private AddService addService;
     private MonitorPropertiesMapper monitorPropertiesMapper;
@@ -51,54 +55,95 @@ public class AddController {
         this.pcPropertiesMapper = pcPropertiesMapper;
     }
 
+
+    @Operation(summary = "Allow to add new monitor",tags = "Adding API")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Add new monitor",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = IdMessage.class))}
+    )
     @PostMapping("/monitor")
     public ResponseEntity<IdMessage> addMonitor(@RequestBody  MonitorProperties properties) {
 
-        logger.debug("'addMonitor' request with properties " + properties);
+        log.debug("'addMonitor' request with properties " + properties);
 
         Monitor monitor = addService.add(monitorPropertiesMapper.map(properties));
         IdMessage message = new IdMessage(monitor.getId());
 
-        logger.debug("'addMonitor' response " + message);
+        log.debug("'addMonitor' response " + message);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+
+
+    @Operation(summary = "Allow to add new hard disk",tags = "Adding API")
+    @ApiResponse(
+        responseCode = "200",
+        description = "Add new hard disk",
+        content = {
+                @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = IdMessage.class))}
+    )
     @PostMapping("/harddisk")
     public ResponseEntity<IdMessage> addHardDisk(@RequestBody HardDiskProperties properties) {
 
-        logger.debug("'addHardDisk' request with properties " + properties);
+        log.debug("'addHardDisk' request with properties " + properties);
 
         HardDisk hardDisk = addService.add(hardDiskPropertiesMapper.map(properties));
         IdMessage message = new IdMessage(hardDisk.getId());
 
-        logger.debug("'addHardDisk' response " + message);
+        log.debug("'addHardDisk' response " + message);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+
+
+    @Operation(summary = "Allow to add new pc",tags = "Adding API")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Add new pc",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = IdMessage.class))}
+    )
     @PostMapping("/pc")
     public ResponseEntity<?> addPC(@RequestBody PCProperties properties) {
 
-        logger.debug("'addPC' request with properties " + properties);
+        log.debug("'addPC' request with properties " + properties);
 
         PC pc = addService.add(pcPropertiesMapper.map(properties));
         IdMessage message = new IdMessage(pc.getId());
 
-        logger.debug("'addPC' response " + message);
+        log.debug("'addPC' response " + message);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+
+
+    @Operation(summary = "Allow to add new laptop",tags = "Adding API")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Add new laptop",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = IdMessage.class))}
+    )
     @PostMapping("/laptop")
     public ResponseEntity<?> addLaptop(@RequestBody LaptopProperties properties) {
 
-        logger.debug("'addLaptop' request with properties " + properties);
+        log.debug("'addLaptop' request with properties " + properties);
 
         Laptop laptop = addService.add(laptopPropertiesMapper.map(properties));
         IdMessage message = new IdMessage(laptop.getId());
 
-        logger.debug("'addLaptop' response " + message);
+        log.debug("'addLaptop' response " + message);
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
-
-
 
 }
