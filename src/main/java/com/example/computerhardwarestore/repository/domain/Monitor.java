@@ -1,5 +1,7 @@
 package com.example.computerhardwarestore.repository.domain;
 
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,6 +16,17 @@ public class Monitor extends GoodEntity {
     @NotNull(message = "Diagonal cannot be null")
     @Positive(message = "Diagonal cannot be negative")
     private double diagonal;
+
+    public Monitor(Long id, GoodType type, String serialNumber, String manufacturer,
+                   double price, Long quantityInStock, double diagonal) {
+        super(id, type, serialNumber, manufacturer, price, quantityInStock);
+        this.diagonal = diagonal;
+    }
+
+    public Monitor() {
+
+    }
+
 
     public double getDiagonal() {
         return diagonal;

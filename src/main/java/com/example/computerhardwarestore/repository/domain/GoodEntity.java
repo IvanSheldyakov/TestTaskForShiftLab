@@ -1,6 +1,7 @@
 package com.example.computerhardwarestore.repository.domain;
 
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +22,7 @@ public abstract class GoodEntity {
 
     @Column(name = "type")
     @NotNull(message = "Type cannot be null")
+    @JsonIgnore
     protected GoodType type;
 
     @Column(name = "serial_number")
@@ -41,7 +43,20 @@ public abstract class GoodEntity {
     @PositiveOrZero(message = "Quantity cannot be negative")
     protected Long quantityInStock;
 
-    
+    public GoodEntity(Long id, GoodType type, String serialNumber,
+                      String manufacturer, double price, Long quantityInStock) {
+        this.id = id;
+        this.type = type;
+        this.serialNumber = serialNumber;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.quantityInStock = quantityInStock;
+    }
+
+    public GoodEntity() {
+
+    }
+
     public Long getId() {
         return id;
     }

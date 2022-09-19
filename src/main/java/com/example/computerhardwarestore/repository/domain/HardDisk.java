@@ -1,5 +1,7 @@
 package com.example.computerhardwarestore.repository.domain;
 
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,6 +16,16 @@ public class HardDisk extends GoodEntity{
     @NotNull(message = "Volume cannot be null")
     @Positive(message = "Volume cannot be negative")
     private double volume;
+
+    public HardDisk(Long id, GoodType type, String serialNumber,
+                    String manufacturer, double price, Long quantityInStock, double volume) {
+        super(id, type, serialNumber, manufacturer, price, quantityInStock);
+        this.volume = volume;
+    }
+
+    public HardDisk() {
+
+    }
 
     public double getVolume() {
         return volume;

@@ -16,4 +16,5 @@ public interface GoodRepository extends JpaRepository<GoodEntity,Long> {
 
     List<GoodEntity> findAllByType(GoodType type);
 
+    boolean existsGoodEntityBySerialNumber(String serialNumber);
 }

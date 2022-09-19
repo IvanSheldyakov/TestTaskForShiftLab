@@ -10,5 +10,7 @@ import java.util.Optional;
 public interface HardDiskRepository extends JpaRepository<HardDisk,Long> {
     @Override
     Optional<HardDisk> findById(Long id);
+
+
 }
 

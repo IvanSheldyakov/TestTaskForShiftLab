@@ -23,6 +23,8 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ResponseMessage> handleException(HttpMessageNotReadableException e) {
         String message = findPossibleValues(e.getMessage());

@@ -1,8 +1,11 @@
 package com.example.computerhardwarestore.controller;
 
+import com.example.computerhardwarestore.repository.domain.*;
 import com.example.computerhardwarestore.service.DeleteService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,45 +36,64 @@ public class DeleteController {
     @Operation(summary = "Allow to delete monitor",tags = "Deleting API")
     @ApiResponse(
             responseCode = "200",
-            description = "Delete monitor"
+            description = "Delete the monitor",
+            content = {
+                    @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = Monitor.class))}
     )
     @DeleteMapping("/monitor")
-    public ResponseEntity<?> deleteMonitor(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<Monitor> deleteMonitor(@RequestParam(name = "id") Long id) {
 
         log.debug("'deleteMonitor' request with id " + id);
 
-        deleteService.deleteMonitorById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Monitor monitor = deleteService.deleteMonitorById(id);
+
+        log.debug("'deleteMonitor' response " + monitor);
+        return new ResponseEntity<>(monitor,HttpStatus.OK);
     }
 
 
     @Operation(summary = "Allow to delete hard disk",tags = "Deleting API")
     @ApiResponse(
             responseCode = "200",
-            description = "Delete hard disk"
+            description = "Delete the hard disk",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = HardDisk.class))}
     )
     @DeleteMapping("/harddisk")
-    public ResponseEntity<?> deleteHardDisk(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<HardDisk> deleteHardDisk(@RequestParam(name = "id") Long id) {
 
         log.debug("'deleteHardDisk' request with id " + id);
 
-        deleteService.deleteHardDisk(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        HardDisk hardDisk = deleteService.deleteHardDisk(id);
+
+        log.debug("'deleteHardDisk' response " + hardDisk);
+        return new ResponseEntity<>(hardDisk,HttpStatus.OK);
     }
 
 
     @Operation(summary = "Allow to delete pc",tags = "Deleting API")
     @ApiResponse(
             responseCode = "200",
-            description = "Delete pc"
+            description = "Delete the pc",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PC.class))}
+
     )
     @DeleteMapping("/pc")
-    public ResponseEntity<?> deletePC(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<PC> deletePC(@RequestParam(name = "id") Long id) {
 
         log.debug("'deletePC' request with id " + id);
 
-        deleteService.deletePCById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        PC pc = deleteService.deletePCById(id);
+
+        log.debug("'deletePC' response " + pc);
+        return new ResponseEntity<>(pc,HttpStatus.OK);
     }
 
 
@@ -79,16 +101,22 @@ public class DeleteController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Delete laptop"
+                    description = "Delete the laptop",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Laptop.class))}
             )
     })
     @DeleteMapping("/laptop")
-    public ResponseEntity<?> deleteLaptop(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<Laptop> deleteLaptop(@RequestParam(name = "id") Long id) {
 
         log.debug("'deleteLaptop' request with id " + id);
 
-        deleteService.deleteLaptopById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Laptop laptop = deleteService.deleteLaptopById(id);
+
+        log.debug("'deleteLaptop' response " + laptop);
+        return new ResponseEntity<>(laptop,HttpStatus.OK);
     }
 
 }

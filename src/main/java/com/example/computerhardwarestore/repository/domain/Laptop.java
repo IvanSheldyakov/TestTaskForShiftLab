@@ -1,6 +1,7 @@
 package com.example.computerhardwarestore.repository.domain;
 
 
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.LaptopSize;
 
 import javax.persistence.Column;
@@ -16,6 +17,16 @@ public class Laptop extends GoodEntity {
     @NotNull(message = "Type cannot be null")
     private LaptopSize size;
 
+    public Laptop(Long id, GoodType type, String serialNumber, String manufacturer,
+                  double price, Long quantityInStock, LaptopSize size) {
+        super(id, type, serialNumber, manufacturer, price, quantityInStock);
+        this.size = size;
+    }
+
+    public Laptop() {
+
+    }
+
     public LaptopSize getSize() {
         return size;
     }
@@ -23,6 +34,7 @@ public class Laptop extends GoodEntity {
     public void setSize(LaptopSize size) {
         this.size = size;
     }
+
 
     @Override
     public String toString() {

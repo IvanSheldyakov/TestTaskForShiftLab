@@ -1,14 +1,14 @@
 package com.example.computerhardwarestore.service;
 
+import com.example.computerhardwarestore.repository.domain.HardDisk;
 import com.example.computerhardwarestore.repository.domain.Laptop;
-
-
-import java.util.Optional;
+import com.example.computerhardwarestore.repository.domain.Monitor;
+import com.example.computerhardwarestore.repository.domain.PC;
 
 public interface DeleteService {
 
-    void deleteMonitorById(Long id);
-    void deleteLaptopById(Long id);
-    void deletePCById(Long id);
-    void deleteHardDisk(Long id);
+    Monitor deleteMonitorById(Long id);
+    Laptop deleteLaptopById(Long id);
+    PC deletePCById(Long id);
+    HardDisk deleteHardDisk(Long id);
 }
