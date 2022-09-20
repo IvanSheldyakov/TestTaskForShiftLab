@@ -38,7 +38,7 @@ public abstract class GoodEntity {
     @Column(name = "price")
     @NotNull(message = "Price cannot be null")
     @Positive(message = "Price cannot be negative")
-    protected double price;
+    protected Double price;
 
     @Column(name = "quantity_in_stock")
     @NotNull(message = "Quantity cannot be null")
@@ -92,11 +92,11 @@ public abstract class GoodEntity {
         this.manufacturer = manufacturer;
     }
 
-    public double getPrice() {
+    public @NotNull(message = "Price cannot be null") @Positive(message = "Price cannot be negative") Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(@NotNull(message = "Price cannot be null") @Positive(message = "Price cannot be negative") Double price) {
         this.price = price;
     }
 

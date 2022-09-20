@@ -15,7 +15,7 @@ public class Monitor extends GoodEntity {
     @Column(name = "diagonal")
     @NotNull(message = "Diagonal cannot be null")
     @Positive(message = "Diagonal cannot be negative")
-    private double diagonal;
+    private  Double diagonal;
 
     public Monitor(Long id, GoodType type, String serialNumber, String manufacturer,
                    double price, Long quantityInStock, double diagonal) {
@@ -28,11 +28,11 @@ public class Monitor extends GoodEntity {
     }
 
 
-    public double getDiagonal() {
+    public @NotNull(message = "Diagonal cannot be null") @Positive(message = "Diagonal cannot be negative") Double getDiagonal() {
         return diagonal;
     }
 
-    public void setDiagonal(double diagonal) {
+    public void setDiagonal(@NotNull(message = "Diagonal cannot be null") @Positive(message = "Diagonal cannot be negative") Double diagonal) {
         this.diagonal = diagonal;
     }
 
