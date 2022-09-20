@@ -68,10 +68,7 @@
    - **HardDisk** для особыз свойств жестких дисков
    - **Monitor** для особых свойств мониторов
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/TestTaskForShiftLab/entities_uml.png">
-  <source media="(prefers-color-scheme: light)" srcset="/TestTaskForShiftLab/entities_uml.png">
-</picture>
+![alt text](https://github.com/IvanSheldyakov/TestTaskForShiftLab/blob/dev/entities_uml.png?raw=true)
 
 * Для создания репозиториев использовал **Spring Data JPA репозитории**
 * Имеются следующие репозитории, реализующие интерфейс JpaRepository:
