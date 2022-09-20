@@ -69,8 +69,8 @@
    - **Monitor** для особых свойств мониторов
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/entities_uml.png">
-  <source media="(prefers-color-scheme: light)" srcset="/entities_uml.png">
+  <source media="(prefers-color-scheme: dark)" srcset="/TestTaskForShiftLab/entities_uml.png">
+  <source media="(prefers-color-scheme: light)" srcset="/TestTaskForShiftLab/entities_uml.png">
 </picture>
 
 * Для создания репозиториев использовал **Spring Data JPA репозитории**
