@@ -1,14 +1,15 @@
 package com.example.computerhardwarestore.dto;
 
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.LaptopSize;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
 
-
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
+@NoArgsConstructor
 public class LaptopProperties extends GoodProperties{
 
     private LaptopSize size;
@@ -23,5 +24,11 @@ public class LaptopProperties extends GoodProperties{
                 ", price=" + price +
                 ", quantityInStock=" + quantityInStock +
                 '}';
+    }
+
+    public LaptopProperties(GoodType type, String serialNumber,
+                            String manufacturer, Double price, Long quantityInStock, LaptopSize size) {
+        super(type, serialNumber, manufacturer, price, quantityInStock);
+        this.size = size;
     }
 }

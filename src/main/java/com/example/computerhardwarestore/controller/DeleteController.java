@@ -68,7 +68,7 @@ public class DeleteController {
 
         log.debug("'deleteHardDisk' request with id " + id);
 
-        HardDisk hardDisk = deleteService.deleteHardDisk(id);
+        HardDisk hardDisk = deleteService.deleteHardDiskById(id);
 
         log.debug("'deleteHardDisk' response " + hardDisk);
         return new ResponseEntity<>(hardDisk,HttpStatus.OK);

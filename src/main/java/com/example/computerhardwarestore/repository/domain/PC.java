@@ -2,6 +2,7 @@ package com.example.computerhardwarestore.repository.domain;
 
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 import com.example.computerhardwarestore.repository.domain.possiblevalues.PCFormFactorType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ public class PC extends GoodEntity {
 
     @Column(name = "form_factor")
     @NotNull(message = "Type cannot be null")
+    @JsonProperty("form_factor")
     private PCFormFactorType formFactor;
 
 

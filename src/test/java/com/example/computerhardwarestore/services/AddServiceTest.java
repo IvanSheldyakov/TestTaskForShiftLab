@@ -50,7 +50,7 @@ public class AddServiceTest {
     public void setUp() {
         pc = new PC(null, GoodType.PC,"34235GHJK",
                 "asus",1000,10L, PCFormFactorType.DESKTOP);
-        laptop = new Laptop(null, GoodType.HARD_DISK,"HKKH35GHJK",
+        laptop = new Laptop(null, GoodType.LAPTOP,"HKKH35GHJK",
                 "tech",1010,10L, LaptopSize.SEVENTEEN);
         hardDisk = new HardDisk(null, GoodType.HARD_DISK,"HAAAAA5GHJK",
                 "tech",1010,10L, 1024);

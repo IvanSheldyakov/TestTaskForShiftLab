@@ -2,6 +2,7 @@ package com.example.computerhardwarestore.repository.domain;
 
 import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -27,6 +28,7 @@ public abstract class GoodEntity {
 
     @Column(name = "serial_number")
     @NotBlank(message = "serial number cannot be blank")
+    @JsonProperty("serial_number")
     protected String serialNumber;
 
     @Column(name = "manufacturer")
@@ -41,6 +43,7 @@ public abstract class GoodEntity {
     @Column(name = "quantity_in_stock")
     @NotNull(message = "Quantity cannot be null")
     @PositiveOrZero(message = "Quantity cannot be negative")
+    @JsonProperty("quantity_in_stock")
     protected Long quantityInStock;
 
     public GoodEntity(Long id, GoodType type, String serialNumber,

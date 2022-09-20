@@ -2,7 +2,7 @@ package com.example.computerhardwarestore.controller.advice;
 
 import com.example.computerhardwarestore.exceptions.ComputerStoreException;
 import com.example.computerhardwarestore.model.ResponseMessage;
-import com.example.computerhardwarestore.utility.Regex;
+import com.example.computerhardwarestore.utility.Regexes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -34,7 +34,7 @@ public class ExceptionAdvice {
 
     private String findPossibleValues(String message) {
 
-        Pattern pattern = Pattern.compile(Regex.SOMETHING_BETWEEN_SQUARE_BRACKETS);
+        Pattern pattern = Pattern.compile(Regexes.SOMETHING_BETWEEN_SQUARE_BRACKETS);
         Matcher matcher = pattern.matcher(message);
         if (matcher.find()) {
             return "incorrect value, use values " + message.substring(matcher.start(), matcher.end());

@@ -1,17 +1,15 @@
 package com.example.computerhardwarestore.dto;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class HardDiskProperties extends GoodProperties {
 
     private Double volume;
@@ -26,5 +24,11 @@ public class HardDiskProperties extends GoodProperties {
                 ", price=" + price +
                 ", quantityInStock=" + quantityInStock +
                 '}';
+    }
+
+    public HardDiskProperties(GoodType type, String serialNumber,
+                              String manufacturer, Double price, Long quantityInStock, Double volume) {
+        super(type, serialNumber, manufacturer, price, quantityInStock);
+        this.volume = volume;
     }
 }

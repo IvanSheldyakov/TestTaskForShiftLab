@@ -50,7 +50,7 @@ public class UpdateServiceTest {
     public void setUp() {
         pc = new PC(1L, GoodType.PC,"34235GHJK",
                 "asus",1000,10L, PCFormFactorType.DESKTOP);
-        laptop = new Laptop(2L, GoodType.HARD_DISK,"HKKH35GHJK",
+        laptop = new Laptop(2L, GoodType.LAPTOP,"HKKH35GHJK",
                 "tech",1010,10L, LaptopSize.SEVENTEEN);
         hardDisk = new HardDisk(3L, GoodType.HARD_DISK,"HAAAAA5GHJK",
                 "tech",1010,10L, 1024);

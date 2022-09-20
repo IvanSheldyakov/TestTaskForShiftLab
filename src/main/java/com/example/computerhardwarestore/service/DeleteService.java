@@ -10,5 +10,5 @@ public interface DeleteService {
     Monitor deleteMonitorById(Long id);
     Laptop deleteLaptopById(Long id);
     PC deletePCById(Long id);
-    HardDisk deleteHardDisk(Long id);
+    HardDisk deleteHardDiskById(Long id);
 }

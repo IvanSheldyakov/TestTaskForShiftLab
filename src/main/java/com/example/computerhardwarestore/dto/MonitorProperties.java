@@ -1,16 +1,14 @@
 package com.example.computerhardwarestore.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import com.example.computerhardwarestore.repository.domain.possiblevalues.GoodType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class MonitorProperties extends GoodProperties{
 
 
@@ -26,5 +24,11 @@ public class MonitorProperties extends GoodProperties{
                 ", price=" + price +
                 ", quantityInStock=" + quantityInStock +
                 '}';
+    }
+
+    public MonitorProperties(GoodType type, String serialNumber,
+                             String manufacturer, Double price, Long quantityInStock, Double diagonal) {
+        super(type, serialNumber, manufacturer, price, quantityInStock);
+        this.diagonal = diagonal;
     }
 }

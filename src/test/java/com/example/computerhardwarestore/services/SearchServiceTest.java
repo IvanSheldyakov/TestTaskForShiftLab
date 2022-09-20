@@ -18,8 +18,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Optional;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -53,7 +53,7 @@ public class SearchServiceTest {
     public void setUp() {
         pc = new PC(1L, GoodType.PC,"34235GHJK",
                 "asus",1000,10L, PCFormFactorType.DESKTOP);
-        laptop = new Laptop(2L, GoodType.HARD_DISK,"HKKH35GHJK",
+        laptop = new Laptop(2L, GoodType.LAPTOP,"HKKH35GHJK",
                 "tech",1010,10L, LaptopSize.SEVENTEEN);
         hardDisk = new HardDisk(3L, GoodType.HARD_DISK,"HAAAAA5GHJK",
                 "tech",1010,10L, 1024);
@@ -93,4 +93,15 @@ public class SearchServiceTest {
         assertThat(searchService.findHardDiskById(hardDisk.getId()).get()).isEqualTo(hardDisk);
     }
 
-}//TODO
+    @Test
+    public void givenIdThenShouldReturnGoodOfThatId() {
+        when(goodRepository.findById(hardDisk.getId())).thenReturn(Optional.ofNullable(hardDisk));
+        assertThat(searchService.findGoodById(hardDisk.getId()).get()).isEqualTo(hardDisk);
+    }
+
+    @Test
+    public void givenTypeThenShouldReturnAllGoodsOfThatType() {
+        when(goodRepository.findAllByType(GoodType.PC)).thenReturn(List.of(pc));
+        assertThat(searchService.findAllByType(GoodType.PC)).isEqualTo(List.of(pc));
+    }
+}

@@ -58,7 +58,7 @@ public class AddController {
 
     @Operation(summary = "Allow to add new monitor",tags = "Adding API")
     @ApiResponse(
-            responseCode = "200",
+            responseCode = "201",
             description = "Add new monitor",
             content = {
                     @Content(
@@ -74,14 +74,14 @@ public class AddController {
         IdMessage message = new IdMessage(monitor.getId());
 
         log.debug("'addMonitor' response " + message);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+        return new ResponseEntity<>(message,HttpStatus.CREATED);
     }
 
 
 
     @Operation(summary = "Allow to add new hard disk",tags = "Adding API")
     @ApiResponse(
-        responseCode = "200",
+        responseCode = "201",
         description = "Add new hard disk",
         content = {
                 @Content(
@@ -97,14 +97,14 @@ public class AddController {
         IdMessage message = new IdMessage(hardDisk.getId());
 
         log.debug("'addHardDisk' response " + message);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+        return new ResponseEntity<>(message,HttpStatus.CREATED);
     }
 
 
 
     @Operation(summary = "Allow to add new pc",tags = "Adding API")
     @ApiResponse(
-            responseCode = "200",
+            responseCode = "201",
             description = "Add new pc",
             content = {
                     @Content(
@@ -120,14 +120,14 @@ public class AddController {
         IdMessage message = new IdMessage(pc.getId());
 
         log.debug("'addPC' response " + message);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+        return new ResponseEntity<>(message,HttpStatus.CREATED);
     }
 
 
 
     @Operation(summary = "Allow to add new laptop",tags = "Adding API")
     @ApiResponse(
-            responseCode = "200",
+            responseCode = "201",
             description = "Add new laptop",
             content = {
                     @Content(
@@ -143,7 +143,7 @@ public class AddController {
         IdMessage message = new IdMessage(laptop.getId());
 
         log.debug("'addLaptop' response " + message);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+        return new ResponseEntity<>(message,HttpStatus.CREATED);
     }
 
 }

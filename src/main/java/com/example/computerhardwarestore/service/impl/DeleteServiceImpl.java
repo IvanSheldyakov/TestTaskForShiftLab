@@ -52,7 +52,7 @@ public class DeleteServiceImpl implements DeleteService {
     }
 
     @Override
-    public HardDisk deleteHardDisk(Long id) {
+    public HardDisk deleteHardDiskById(Long id) {
         return deleteGood(hardDiskRepository,id);
     }
     private <T> T deleteGood(JpaRepository<T, Long> repository, Long id) {
